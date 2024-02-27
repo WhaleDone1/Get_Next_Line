@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:22:37 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/27 12:54:05 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:03:53 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 char	*ft_strcpy(char *src, char *dest)
 {
-	char	*tmp;
 	int	i;
 
-	tmp = malloc((ft_strlen(src) + 1) * sizeof(char));
+	dest = malloc((ft_strlen(src) + 1) * sizeof(char));
 	if (!tmp)
 		return (NULL);
 	i = 0;
