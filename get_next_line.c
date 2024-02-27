@@ -6,7 +6,7 @@
 /*   By: bcarpent <bcarpent@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:21:12 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/27 12:02:40 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:49:23 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ static char	*ft_free(char *stash, char *buffer)
 {
 	char	*tmp;
 
-//	if (!buffer)
-//		return (stash);
+	if (!buffer)
+		return (stash);
+	if (!stash)
+		return (ft_strcpy(buffer, stash));
 	tmp = ft_strjoin(stash, buffer);
-	free(buffer);
 	return (tmp);
 }
 
@@ -33,8 +34,7 @@ static char	*read_file(int fd, char *stash)
 	char	*buffer;
 
 	count_char = BUFFER_SIZE;
-	if (!stash)
-		stash = ft_calloc(1, 1);
+	stash = NULL;
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	while (count_char > 0)
 	{
