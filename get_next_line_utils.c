@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:22:37 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/27 13:03:53 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:05:24 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*ft_strcpy(char *src, char *dest)
 	int	i;
 
 	dest = malloc((ft_strlen(src) + 1) * sizeof(char));
-	if (!tmp)
+	if (!dest)
 		return (NULL);
 	i = 0;
 	while (src[i])

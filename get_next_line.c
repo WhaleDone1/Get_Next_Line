@@ -6,7 +6,7 @@
 /*   By: bcarpent <bcarpent@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:21:12 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/27 12:49:23 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:10:59 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	*get_line(char *stash)
 	while (stash[i] && stash[i] != '\n')
 		i++;
 	line = ft_calloc(i + 2, sizeof(char));
-	while (j < i)
+	while (j <= i)
 	{
 		line[j] = stash[j];
 		j++;
@@ -76,6 +76,7 @@ char	*remove_line(char *stash)
 	j = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
+	i++;
 	tmp = ft_calloc(ft_strlen(stash) - i + 1, sizeof(char));
 	while (stash[i])
 	{
@@ -93,12 +94,10 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	//if (!stash)
-	stash = read_file(fd, stash);
-	/*line = get_line(stash);
+	if (!stash)
+		stash = read_file(fd, stash);
+	line = get_line(stash);
 	stash = remove_line(stash);
-	*/
-	printf("%s", stash);
 	return (line);
 }
 
@@ -126,26 +125,26 @@ int main(){
     // free_ptr((void **)(&s));
 
     int fd = open("testfile.txt", O_RDONLY);
-	if (fd < 1)
-		return (0);
-	printf("%c", 'a');
 
     char *s;
-     s = get_next_line(fd);
-     /*printf("[%s]", s);
+     /*s = get_next_line(fd);
+     printf("[%s]", s);
      s = get_next_line(fd);
      printf("[%s]", s);
      s = get_next_line(fd);
-     printf("[%s]", s);*/
+     printf("[%s]", s);
+*/
 
-    /*s = get_next_line(fd);
+    s = get_next_line(fd);
     printf("[%s]", s);
     free(s);
-    while (s)
+    int i = 0;
+    while (s && i < 15)
     {
         s = get_next_line(fd);
         printf("[%s]", s);    
         free(s);
-    }*/
+	i++;
+    }
     close(fd);
 }
