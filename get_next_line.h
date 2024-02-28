@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:09:35 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/27 12:44:20 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:21:04 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stddef.h>
 
 size_t	ft_strlen(const char *str);
+int     ft_strchrn(char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 char    *ft_strcpy(char *src, char *dest);
 char    *get_next_line(int fd);

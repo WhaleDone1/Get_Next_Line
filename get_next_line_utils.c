@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:22:37 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/27 13:05:24 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:20:32 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,27 +67,35 @@ char	*ft_strcpy(char *src, char *dest)
 	return (dest);
 }
 
-static void	ft_bzero(void *s, size_t n)
+int	ft_strchrn(char *str)
 {
-	char	*str;
-	size_t	i;
+	int	i;
 
-	str = (char *)s;
 	i = 0;
+	while(str[i])
+	{
+		if (str[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	int		i;
+	int		n;
+	char	*str;
+
+	i = 0;
+	n = (size * count);
+	str = malloc(n);
+	if (!str)
+		return (NULL);
 	while (i < n)
 	{
 		str[i] = '\0';
 		i++;
 	}
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	char	*str;
-
-	str = malloc(size * count);
-	if (!str)
-		return (NULL);
-	ft_bzero(str, size * count);
 	return (str);
 }
