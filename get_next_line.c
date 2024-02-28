@@ -6,7 +6,7 @@
 /*   By: bcarpent <bcarpent@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:21:12 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/27 13:10:59 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/02/28 09:52:21 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static char	*ft_free(char *stash, char *buffer)
 	if (!stash)
 		return (ft_strcpy(buffer, stash));
 	tmp = ft_strjoin(stash, buffer);
+	//free(stash);
 	return (tmp);
 }
 
@@ -40,10 +41,14 @@ static char	*read_file(int fd, char *stash)
 	{
 		count_char = read(fd, buffer, BUFFER_SIZE);
 		if (count_char == -1)
+		{
+			//free(buffer);
 			return (NULL);
+		}
 		buffer[count_char] = 0;
 		stash = ft_free(stash, buffer);
 	}
+	//free(buffer);
 	return (stash);
 }
 
@@ -84,6 +89,7 @@ char	*remove_line(char *stash)
 		i++;
 		j++;
 	}
+	//free(stash);
 	return (tmp);
 }
 
