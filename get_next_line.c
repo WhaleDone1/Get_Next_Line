@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 11:06:11 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/28 14:37:37 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:29:54 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static char	*next_line(char *stash)
 	j = 0;
 	while (stash[i] && stash[i] != '\n')
 		i++;
-	if ((tmp = ft_calloc(ft_strlen(stash) - (i + 1), sizeof(char))) == NULL)
+	if ((tmp = ft_calloc(ft_strlen(stash) - (i), sizeof(char))) == NULL)
 		return (NULL);
 	if (!stash[i])
 	{
