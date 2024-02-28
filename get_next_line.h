@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:09:35 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/28 14:21:04 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:03:14 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	*ft_calloc(size_t count, size_t size);
 #endif
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 20
+# define BUFFER_SIZE 10
 #endif
