@@ -6,7 +6,7 @@
 /*   By: bcarpent <bcarpent@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:21:12 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/28 09:57:47 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:34:15 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,13 @@ static char	*read_file(int fd, char *stash)
 	count_char = BUFFER_SIZE;
 	stash = NULL;
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	//if (!buffer)
+	//	return (NULL);
 	while (count_char > 0)
 	{
 		count_char = read(fd, buffer, BUFFER_SIZE);
+		//if (count_char == 0)
+		//	break;
 		if (count_char == -1)
 		{
 			//free(buffer);
@@ -63,6 +67,8 @@ static char	*get_line(char *stash)
 	while (stash[i] && stash[i] != '\n')
 		i++;
 	line = ft_calloc(i + 2, sizeof(char));
+	//if (!line)
+	//	return (NULL);
 	while (j <= i)
 	{
 		line[j] = stash[j];
@@ -83,7 +89,14 @@ char	*remove_line(char *stash)
 		i++;
 	//if (stash[i] != '\0')
 		i++; //n'etait pas dans le if avant
+	//else
+	//{
+	//	free(stash);
+	//	return (NULL);
+	//}
 	tmp = ft_calloc(ft_strlen(stash) - i + 1, sizeof(char));
+	//if (!tmp)
+	//	return (NULL);
 	while (stash[i])
 	{
 		tmp[j] = stash[i];
@@ -108,7 +121,9 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int main(){
+
+
+/*int main(){
 
     // printf("ret:%s\n",get_next_line(5));
     // printf("ret:%s\n",get_next_line(5));
@@ -132,13 +147,13 @@ int main(){
     int fd = open("testfile.txt", O_RDONLY);
 
     char *s;
-     /*s = get_next_line(fd);
-     printf("[%s]", s);
-     s = get_next_line(fd);
-     printf("[%s]", s);
-     s = get_next_line(fd);
-     printf("[%s]", s);
-*/
+     //s = get_next_line(fd);
+     //printf("[%s]", s);
+     //s = get_next_line(fd);
+     //printf("[%s]", s);
+     //s = get_next_line(fd);
+     //printf("[%s]", s);
+
 
     s = get_next_line(fd);
     printf("[%s]", s);
@@ -152,4 +167,4 @@ int main(){
 	i++;
     }
     close(fd);
-}
+}*/
