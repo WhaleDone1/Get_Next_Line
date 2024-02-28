@@ -6,7 +6,7 @@
 /*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 11:06:11 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/28 15:29:54 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:54:25 by bcarpent         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ static char	*next_line(char *stash)
 		i++;
 		j++;
 	}
+	free(stash);
 	return (tmp);
 }
 
