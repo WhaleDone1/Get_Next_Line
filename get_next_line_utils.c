@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcarpent <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:22:37 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/28 14:20:32 by bcarpent         ###   ########.fr       */
+/*   Updated: 2024/02/28 22:03:31 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+size_t ft_strlen(const char *str)
 {
-	size_t	i;
+	size_t i;
 
 	i = 0;
 	while (str[i])
@@ -22,12 +22,12 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	int		sizetotal;
-	int		i;
-	int		j;
-	char	*str;
+	int sizetotal;
+	int i;
+	int j;
+	char *str;
 
 	i = 0;
 	sizetotal = ft_strlen(s1) + ft_strlen(s2);
@@ -50,42 +50,23 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-char	*ft_strcpy(char *src, char *dest)
+char *ft_strchrn(char *buffer)
 {
-	int	i;
+	char *str;
 
-	dest = malloc((ft_strlen(src) + 1) * sizeof(char));
-	if (!dest)
-		return (NULL);
-	i = 0;
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	str = (char *)buffer;
+	while (*str != '\0' && *str != '\n')
+		str++;
+	if (*str == '\n')
+		return (str);
+	return (NULL);
 }
 
-int	ft_strchrn(char *str)
+void *ft_calloc(size_t count, size_t size)
 {
-	int	i;
-
-	i = 0;
-	while(str[i])
-	{
-		if (str[i] == '\n')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	int		i;
-	int		n;
-	char	*str;
+	int i;
+	int n;
+	char *str;
 
 	i = 0;
 	n = (size * count);
