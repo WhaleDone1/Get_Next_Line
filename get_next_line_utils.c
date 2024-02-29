@@ -6,77 +6,80 @@
 /*   By: barpent <barpent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 10:22:37 by bcarpent          #+#    #+#             */
-/*   Updated: 2024/02/28 22:03:31 by barpent          ###   ########.fr       */
+/*   Updated: 2024/02/29 14:21:58 by barpent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t ft_strlen(const char *str)
+size_t ft_strlen(const char *s)
 {
 	size_t i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
 		i++;
 	return (i);
 }
 
-char *ft_strjoin(char const *s1, char const *s2)
+int check_nl(char *stash)
 {
-	int sizetotal;
-	int i;
-	int j;
-	char *str;
+	size_t i;
 
-	i = 0;
-	sizetotal = ft_strlen(s1) + ft_strlen(s2);
-	str = malloc(sizeof(char) * (sizetotal + 1));
-	if (!str || !s1 || !s2)
-		return (NULL);
-	while (s1[i] != 0)
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j] != 0)
-	{
-		str[i] = s2[j];
-		i++;
-		j++;
-	}
-	str[sizetotal] = 0;
-	return (str);
+	i = -1;
+	if (!stash)
+		return (-1);
+	while (stash[++i])
+		if (stash[i] == '\n')
+			return (i);
+	return (-1);
 }
 
-char *ft_strchrn(char *buffer)
+char *ft_strcpy(char *dst, const char *src)
 {
-	char *str;
-
-	str = (char *)buffer;
-	while (*str != '\0' && *str != '\n')
-		str++;
-	if (*str == '\n')
-		return (str);
-	return (NULL);
-}
-
-void *ft_calloc(size_t count, size_t size)
-{
-	int i;
-	int n;
-	char *str;
+	size_t i;
 
 	i = 0;
-	n = (size * count);
-	str = malloc(n);
-	if (!str)
-		return (NULL);
-	while (i < n)
+	while (src[i])
 	{
-		str[i] = '\0';
+		dst[i] = src[i];
 		i++;
 	}
-	return (str);
+	dst[i] = 0;
+	return (dst);
+}
+
+char *ft_strjoin(char *stash, char *buffer)
+{
+	char *result;
+	size_t i;
+	size_t a;
+
+	a = -1;
+	i = -1;
+	result = malloc(sizeof(char) * (ft_strlen(stash) + ft_strlen(buffer) + 1));
+	if (!result)
+		return (NULL);
+	while (stash[++i])
+		result[i] = stash[i];
+	while (buffer[++a])
+		result[i++] = buffer[a];
+	result[i] = 0;
+	free(stash);
+	return (result);
+}
+
+char *ft_strdup(char *buffer)
+{
+	char *result;
+	size_t i;
+
+	i = -1;
+	result = malloc(sizeof(char) * (ft_strlen(buffer) + 1));
+	if (!result)
+		return (NULL);
+	while (buffer[++i])
+		result[i] = buffer[i];
+	result[i] = 0;
+	return (result);
 }
